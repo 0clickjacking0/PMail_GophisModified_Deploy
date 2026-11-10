@@ -14,10 +14,10 @@
 #   sudo INTERNAL_DNS=10.0.0.53 bash deploy-intranet.sh  # 指定内网 DNS
 #
 # 离线模式准备 (在一台能联网的机器上执行):
-#   docker build -t pmail:only25 ./PMail
-#   docker build -t gophish-modified:concurrency ./GophisModified
-#   docker save pmail:only25 -o pmail.tar
-#   docker save gophish-modified:concurrency -o gophish.tar
+#   # 公网版 deploy.sh 会生成部署镜像名 pmail:inline-cid 与
+#   # gophish-modified:inline-qr；内网离线模式沿用这两个镜像名。
+#   docker save pmail:inline-cid -o pmail.tar
+#   docker save gophish-modified:inline-qr -o gophish.tar
 #   # 把 pmail.tar / gophish.tar 拷到内网服务器 /opt/mail-deploy/images/ 下
 #====================================================================
 set -e
@@ -32,9 +32,9 @@ error() { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 command -v apt-get >/dev/null || error "此脚本仅支持 Ubuntu (apt)"
 
 PMAIL_GIT="https://github.com/0clickjacking0/PMail.git"
-PMAIL_BRANCH="only_25_send"
+PMAIL_BRANCH="mine"
 GOPHISH_GIT="https://github.com/0clickjacking0/GophisModified.git"
-GOPHISH_BRANCH="feat/single-campaign-concurrency"
+GOPHISH_BRANCH="mine"
 
 WORK_DIR="/opt/mail-deploy"
 PMAIL_SRC="$WORK_DIR/pmail-src"
@@ -43,8 +43,8 @@ PMAIL_DATA="$WORK_DIR/pmail-config"
 GOPHISH_DATA="$WORK_DIR/gophish-data"
 IMAGE_DIR="$WORK_DIR/images"
 
-PMAIL_IMAGE="pmail:only25"
-GOPHISH_IMAGE="gophish-modified:concurrency"
+PMAIL_IMAGE="pmail:inline-cid"
+GOPHISH_IMAGE="gophish-modified:inline-qr"
 PMAIL_CONTAINER="pmail"
 GOPHISH_CONTAINER="gophish-modified"
 

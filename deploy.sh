@@ -6,8 +6,8 @@
 #   1. 安装 Docker (如未安装)
 #   2. 安装/配置 dnsmasq (DNS 缓存, 减少出站 DNS 超时)
 #   3. 从 GitHub 拉取源码并构建:
-#        PMail   (0clickjacking0/PMail @ only_25_send)
-#        Gophish (0clickjacking0/GophisModified @ feat/single-campaign-concurrency)
+#        PMail   (0clickjacking0/PMail @ mine)
+#        Gophish (0clickjacking0/GophisModified @ mine)
 #   4. 运行两个容器 (端口与生产一致)
 #   5. 提取 Gophish 初始随机密码并展示
 #   6. [可选] 通过 Spaceship API 自动配置域名 DNS 解析 (A/MX/SPF/DKIM/DMARC)
@@ -44,9 +44,9 @@ error() { echo -e "${RED}[ERROR]${NC} $*"; exit 1; }
 command -v apt-get >/dev/null || error "此脚本仅支持 Ubuntu (apt)"
 
 PMAIL_GIT="https://github.com/0clickjacking0/PMail.git"
-PMAIL_BRANCH="fix/outbound-smtp-transaction-timeout"
+PMAIL_BRANCH="mine"
 GOPHISH_GIT="https://github.com/0clickjacking0/GophisModified.git"
-GOPHISH_BRANCH="feat/single-campaign-concurrency"
+GOPHISH_BRANCH="mine"
 
 WORK_DIR="/opt/mail-deploy"
 PMAIL_SRC="$WORK_DIR/pmail-src"

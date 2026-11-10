@@ -6,8 +6,8 @@ This repository contains deployment scripts for the PMail + Gophish mail/phishin
 
 | Component | Repository | Branch | Required fix |
 |---|---|---|---|
-| PMail | https://github.com/0clickjacking0/PMail | `fix/outbound-smtp-transaction-timeout` | `64f93ae` preserves inline CID attachments in rebuilt MIME |
-| Gophish | https://github.com/0clickjacking0/GophisModified | `feat/single-campaign-concurrency` | `ef953b4` embeds referenced QR codes with a stable CID |
+| PMail | https://github.com/0clickjacking0/PMail | `mine` | Contains `64f93ae` (inline CID) plus current local development changes |
+| Gophish | https://github.com/0clickjacking0/GophisModified | `mine` | Contains `ef953b4` (inline QR) plus current local development changes |
 
 The two QR/CID fixes are complementary. Deploy both together if inline QR images are expected in email bodies.
 
