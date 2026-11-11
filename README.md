@@ -6,7 +6,7 @@ This repository contains deployment scripts for the PMail + Gophish mail/phishin
 
 | Component | Repository | Branch | Required fix |
 |---|---|---|---|
-| PMail | https://github.com/0clickjacking0/PMail | `mine` | Contains `64f93ae` (inline CID) plus current local development changes |
+| PMail | https://github.com/0clickjacking0/PMail | `mine` | `e853e98`: inline CID, `Session.Reset()`, plaintext port 25 with MX failover |
 | Gophish | https://github.com/0clickjacking0/GophisModified | `mine` | Contains `ef953b4` (inline QR) plus current local development changes |
 
 The two QR/CID fixes are complementary. Deploy both together if inline QR images are expected in email bodies.

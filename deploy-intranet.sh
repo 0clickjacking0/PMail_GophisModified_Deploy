@@ -153,7 +153,9 @@ load_or_build() {
             info "$name 源码已存在, 更新到最新 ..."
             cd "$dir"
             git fetch origin
-            git checkout "$branch" 2>/dev/null || git checkout -b "$branch" "origin/$branch"
+            git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+            git fetch origin "$branch:refs/remotes/origin/$branch"
+            git checkout -B "$branch" "origin/$branch"
             git reset --hard "origin/$branch"
         else
             info "克隆 $name ($branch) ..."
